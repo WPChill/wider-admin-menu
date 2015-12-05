@@ -2,7 +2,7 @@
 Contributors: cdillon27
 Tags: admin, menu
 Requires at least: 3.3
-Tested up to: 4.3
+Tested up to: 4.4
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -32,13 +32,13 @@ Can you help? [Contact me](http://www.wpmission.com/contact/).
 
 == Installation ==
 
-Option A: 
+Option A:
 
 1. Go to `Plugins > Add New`.
 1. Search for "wider admin menu".
 1. Click "Install Now".
 
-Option B: 
+Option B:
 
 1. Download the zip file.
 1. Unzip it on your hard drive.
@@ -59,7 +59,7 @@ If you have any questions or need help, use the [support forum](http://wordpress
 
 = I don't need a plugin. Can I just add some code to my stylesheet? =
 
-Sure. That's actually how this plugin started out. If you simply need a wider admin bar and you're cool with CSS then try this: 
+Sure. That's actually how this plugin started out. If you simply need a wider admin bar and you're cool with CSS then try this:
 
 Look in the plugin's `/css` folder for the file `wider-admin-menu.css`.
 
@@ -121,7 +121,7 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 * Add "Alternate Method" instructions.
 * Use WordPress coding standards.
 
-= 0.2.3 = 
+= 0.2.3 =
 * Updated for WordPress 3.8.2.
 
 = 0.2.2 =

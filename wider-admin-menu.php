@@ -1,16 +1,16 @@
 <?php
-/*
+/**
  * Plugin Name: Wider Admin Menu
  * Plugin URI: http://www.wpmission.com/plugins/wider-admin-menu/
  * Description: Let your admin menu breathe.
  * Author: Chris Dillon
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author URI: http://wpmission.com
  * Text Domain: wider-admin-menu
  * Requires: 3.3 or higher
  * License: GPLv3 or later
  *
- * Copyright 2014  Chris Dillon  chris@wpmission.com
+ * Copyright 2014-2016  Chris Dillon  chris@wpmission.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -26,45 +26,45 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
- 
+
 class WiderAdminMenu {
 
 	public function __construct() {
 		load_plugin_textdomain( 'wider-admin-menu', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-		
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_styles' ) );
-		
+
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
-		
+
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 4 );
-		
+
 		add_action( 'admin_head', array( $this, 'custom_admin_style' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
 	}
-		
+
 	public function register_admin_styles( $hook ) {
-		
+
 		if ( 'settings_page_wider-admin-menu' == $hook ) {
-			
+
 			wp_enqueue_style( 'wpmwam-options', plugins_url( '/css/options.css', __FILE__ ) );
-			
+
 			$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
-			
+
 			if ( 'settings' == $active_tab ) {
 				wp_enqueue_style( 'nouislider-style',	plugins_url( '/css/jquery.nouislider.min.css', __FILE__ ) );
 				wp_enqueue_script( 'nouislider', plugins_url( '/js/jquery.nouislider.min.js', __FILE__ ), array( 'jquery' ) );
 				wp_enqueue_script( 'wpmwam-script', plugins_url( '/js/wider-admin-menu.js', __FILE__ ), array( 'nouislider' ) );
 			}
-			
+
 		}
 		elseif ( 'plugins.php' == $hook ) {
-			
+
 			wp_enqueue_style( 'wpmwam-admin-style', plugins_url( '/css/admin.css', __FILE__ ) );
-			
+
 		}
 	}
-	
+
 	/*
 	 * Install with default setting.
 	 */
@@ -75,7 +75,7 @@ class WiderAdminMenu {
 		);
 		update_option( 'wpmwam_options', $options );
 	}
-	
+
 	/*
 	 * Plugin list action links
 	 */
@@ -86,7 +86,7 @@ class WiderAdminMenu {
 		}
 		return $links;
 	}
-	
+
 	/*
 	 * Plugin meta row
 	 */
@@ -105,7 +105,7 @@ class WiderAdminMenu {
 		// Get width option. Prevent zero in case of installation error.
 		$wpmwam = get_option( 'wpmwam_options' );
 		$w = (int) $wpmwam['wpmwam_width'];
-		if ( ! $w ) 
+		if ( ! $w )
 			$w = 160;
 		$wpx = $w . 'px';
 		$w1px = ( $w + 1 ) . 'px';
@@ -115,11 +115,11 @@ class WiderAdminMenu {
 			$file = 'style40';
 		elseif ( version_compare( $wp_version, '3.8', '>=' ) )
 			$file = 'style38';
-		elseif ( version_compare( $wp_version, '3.5', '>=' ) ) 
+		elseif ( version_compare( $wp_version, '3.5', '>=' ) )
 			$file = 'style35';
 		elseif ( version_compare( $wp_version, '3.3', '>=' ) )
 			$file = 'style33';
-			
+
 		include( plugin_dir_path( __FILE__ ) . "includes/$file.php" );
 	}
 
@@ -154,13 +154,13 @@ class WiderAdminMenu {
 		if ( ! current_user_can( 'manage_options' ) )  {
 			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 		}
-			
+
 		$wp_version = get_bloginfo( 'version' );
 		?>
 		<div class="wrap">
-		
+
 			<h2><?php _e( 'Wider Admin Menu', 'wider-admin-menu' ); ?></h2>
-			
+
 			<p><?php _e( 'Adjust the width of the admin menu to accomodate longer menu items.', 'wider-admin-menu' ); ?></p>
 
 			<?php /* tabs */ ?>

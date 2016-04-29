@@ -2,12 +2,12 @@
  * Wider Admin Menu
  */
 jQuery( document ).ready(function($){
-	
+
 	var wpVersion = $('input[name="wp_version"]').val();
-	
+
 	if( undefined === wpVersion )
 		return;
-	
+
 	wpArr = wpVersion.split('.');
 
 	var Link = $.noUiSlider.Link,
@@ -19,7 +19,7 @@ jQuery( document ).ready(function($){
 	// then populate input field with it. (f u browser)
 	var currentWidth = parseInt( $('#wpmwam_current').html() );
 	target.val( currentWidth );
-			
+
 	nouislider.noUiSlider({
 		start: currentWidth,
 		step: 10,
@@ -37,14 +37,14 @@ jQuery( document ).ready(function($){
 				})
 			]
 		}
-		
+
 	});
-	
+
 	// real-time update
 	nouislider.on('set', update);
 	//target.change(update);
 	target.blur(update);
-	
+
 	function update(){
 		var wider = parseInt( target.val() ),
 				widerpx = wider + 'px';
@@ -54,9 +54,9 @@ jQuery( document ).ready(function($){
 				wider2px = wider2 + 'px';
 		// or to lock content at the widest point:
 		// var wider2px = '320px';
-				
+
 		if( parseInt( wpArr[0] ) >= 4 && parseInt( wpArr[1] ) >= 0 ) {  // 4.0+
-		
+
 			$('#wpcontent, #wpfooter').css('margin-left', widerpx);
 
 			$('#adminmenuback, #adminmenuwrap, #adminmenu, #adminmenu .wp-submenu').width(widerpx);
@@ -67,8 +67,10 @@ jQuery( document ).ready(function($){
 
 			$('#adminmenu .wp-not-current-submenu .wp-submenu, .folded #adminmenu .wp-has-current-submenu .wp-submenu').css('min-width', widerpx);
 
+			$("#qm").css("margin-left", widerpx);
+
 		} else if( parseInt( wpArr[0] ) >= 3 && parseInt( wpArr[1] ) >= 8 ) {  // 3.8+
-		
+
 			$('#wpcontent, #wpfooter').css('margin-left', wider2px);
 
 			$('#adminmenuback, #adminmenuwrap, #adminmenu, #adminmenu .wp-submenu').width(widerpx);
@@ -80,7 +82,7 @@ jQuery( document ).ready(function($){
 			$('#adminmenu .wp-not-current-submenu .wp-submenu, .folded #adminmenu .wp-has-current-submenu .wp-submenu').css('min-width', widerpx);
 
 		} else {  // 3.3 - 3.7.1
-		
+
 			$('#wpcontent, #footer').css('margin-left', wider2px);
 
 			$('#adminmenuback, #adminmenuwrap, #adminmenu, #adminmenu .wp-submenu, #adminmenu .wp-submenu-wrap, .folded #adminmenu .wp-has-current-submenu .wp-submenu')
@@ -105,9 +107,9 @@ jQuery( document ).ready(function($){
 				'-ms-transform':     'translate( ' + widerpx + ' )',
 				'transform':         'translate( ' + widerpx + ' )'
 			});
-			
+
 		}
-		
+
 	}
 
 	// reset buttons

@@ -31,4 +31,8 @@
 	transform:         translate( <?php echo $wpx; ?> );
 }
 
+/* Query Monitor plugin */
+body.wp-admin #qm {
+	margin-left: <?php echo $wpx; ?> !important;
+}
 </style>

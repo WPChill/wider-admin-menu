@@ -23,3 +23,8 @@
 .folded #adminmenu .wp-has-current-submenu .wp-submenu {
 	min-width: 200px;
 }
+
+/* Query Monitor plugin */
+body.wp-admin #qm {
+	margin-left: 200px !important;
+}

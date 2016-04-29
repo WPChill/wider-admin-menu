@@ -38,3 +38,8 @@
 	-ms-transform:     translate( 200px );
 	transform:         translate( 200px );
 }
+
+/* Query Monitor plugin */
+body.wp-admin #qm {
+	margin-left: 200px !important;
+}

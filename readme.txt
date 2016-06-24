@@ -101,6 +101,9 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 
 == Changelog ==
 
+= 1.2 - June 24, 2016 =
+* New "Leave No Trace" icon.
+
 = 1.1.3 - April 29, 2016 =
 * Add style for [Query Monitor](https://wordpress.org/plugins/query-monitor/) plugin.
 

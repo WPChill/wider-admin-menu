@@ -4,7 +4,7 @@
  */
 ?>
 <form method="post" action="options.php">
-			
+
 	<?php
 	// version-based CSS classes
 	if ( version_compare( $wp_version, '3.8', '>=' ) ) {
@@ -14,7 +14,7 @@
 		$version_class = 'pre-ver38';
 		$reset_class = 'undo';
 	}
-	
+
 	$default_width = 160;
 	settings_fields( 'wpmwam_settings_group' );
 	$wpmwam_options = get_option( 'wpmwam_options' );
@@ -22,15 +22,15 @@
 	if ( ! $wpmwam_width )
 		$wpmwam_width = $default_width;
 	?>
-	
+
 	<input type="hidden" name="wp_version" value="<?php echo $wp_version; ?>">
-	
+
 	<table class="form-table wpmwam" style="width: auto;">
 		<tr>
 			<td><?php _e( 'New', 'wider-admin-menu' ); ?></td>
 			<td class="input">
-				<input id="wpmwam_width" type="text" name="wpmwam_options[wpmwam_width]" 
-						value="<?php esc_attr_e( $wpmwam_width ); ?>" 
+				<input id="wpmwam_width" type="text" name="wpmwam_options[wpmwam_width]"
+						value="<?php esc_attr_e( $wpmwam_width ); ?>"
 						size="8" maxlength="8" tabindex="1">px
 			</td>
 			<td class="slider">
@@ -54,22 +54,31 @@
 			</td>
 		</tr>
 	</table>
-	
-	<div class="option leave-no-trace">
-		<div class="onoffswitch">
-			<input id="myonoffswitch" type="checkbox" name="wpmwam_options[wpmwam_lnt]" class="onoffswitch-checkbox" value="1" <?php checked( 1, $wpmwam_options['wpmwam_lnt'] ); ?>>
-			<label class="onoffswitch-label" for="myonoffswitch">
-				<div class="onoffswitch-inner"></div>
-				<div class="onoffswitch-switch"></div>
-			</label>
-		</div>
-		<label for="myonoffswitch"><div class="option-label"><?php _e( 'Leave No Trace', 'wider-admin-menu' ); ?></div></label>
-		<div class="option-desc">
-			<?php _e( 'Deleting this plugin will also delete these settings.', 'wider-admin-menu' ); ?><br>
-			<?php _e( 'Deactivating it will <strong>not</strong> delete these settings.', 'wider-admin-menu' ); ?>
-		</div>
-	</div>
-	
+
+	<table class="form-table" style="width: auto;">
+		<tr>
+			<th scope="row">
+				<label class="lnt" for="wpmwam_lnt">Leave No Trace</label>
+			</th>
+			<td>
+				<div id="leave-no-trace">
+					<select id="wpmwam_lnt" name="wpmwam_options[wpmwam_lnt]">
+						<option value="1" <?php selected( $wpmwam_options['wpmwam_lnt'], 1 ); ?>>
+							<?php _e( 'Yes - Deleting this plugin will also delete these settings.', 'wider-admin-menu' ); ?>
+						</option>
+						<option value="0" <?php selected( $wpmwam_options['wpmwam_lnt'], 0 ); ?>>
+							<?php _e( 'No - These settings will remain after deleting this plugin.', 'wider-admin-menu' ); ?>
+						</option>
+					</select>
+
+					<p class="help">
+						<?php _e( 'Deactivating this plugin will not delete anything.', 'wider-admin-menu' ); ?>
+					</p>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 	<?php submit_button(); ?>
-	
+
 </form>

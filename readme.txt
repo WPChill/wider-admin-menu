@@ -3,7 +3,7 @@ Contributors: cdillon27
 Tags: admin, menu
 Requires at least: 3.3
 Tested up to: 4.7
-Stable tag: trunk
+Stable tag: 1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,19 +16,6 @@ Wider Admin Menu by [WP Mission](http://www.wpmission.com) is a lightweight plug
 A separate stylesheet is also included if you wish to avoid Yet Another Plugin. See FAQ.
 
 This plugin will *leave no trace!* If you delete the plugin, all settings will be removed from the database. Guaranteed. However, simply deactivating it will leave your settings in place, as expected.
-
-= Recommended =
-
-[Admin Menu Post List](http://wordpress.org/plugins/admin-menu-post-list/)
-
-= Known Conflicts =
-
-* none
-
-= Translations. =
-
-Can you help? [Contact me](http://www.wpmission.com/contact/).
-
 
 == Installation ==
 
@@ -91,13 +78,6 @@ Need a hand? I'm on the [support forum](http://wordpress.org/support/plugin/wide
 Some plugins and themes don't fully uninstall everything they installed - things like settings, database tables, subdirectories. That bugs me. Sometimes, it bugs your WordPress too.
 
 So this plugin will completely remove itself upon deletion. Deactivating the plugin will leave the settings intact, though. As an added bonus, you can switch off "Leave No Trace" so the settings remain after deletion, if you want.
-
-
-== Screenshots ==
-
-1. Before: 160px default width.
-2. After: the plugin sets the initial width to 200px.
-3. The settings page where you can set the width from 160px - 300px.
 
 == Changelog ==
 

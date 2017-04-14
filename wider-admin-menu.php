@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Wider Admin Menu
- * Plugin URI: http://www.wpmission.com/plugins/wider-admin-menu/
+ * Plugin URI: https://strongplugins.com/downloads/wider-admin-menu/
  * Description: Let your admin menu breathe.
  * Author: Chris Dillon
- * Version: 1.2
- * Author URI: http://wpmission.com
+ * Version: 1.2.1
+ * Author URI: https://strongplugins.com
  * Text Domain: wider-admin-menu
  * Requires: 3.3 or higher
  * License: GPLv3 or later

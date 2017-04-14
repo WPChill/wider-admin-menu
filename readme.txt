@@ -1,9 +1,9 @@
 === Wider Admin Menu ===
 Contributors: cdillon27
-Tags: admin, menu
+Tags: admin menu
 Requires at least: 3.3
 Tested up to: 4.7
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,7 +11,7 @@ Let your admin menu breathe.
 
 == Description ==
 
-Wider Admin Menu by [WP Mission](http://www.wpmission.com) is a lightweight plugin that lets you set the width of your admin menu from the default `160px` up to `300px`.
+Wider Admin Menu is a lightweight plugin that lets you set the width of your admin menu from the default `160px` up to `300px`.
 
 A separate stylesheet is also included if you wish to avoid Yet Another Plugin. See FAQ.
 
@@ -39,8 +39,6 @@ Option C:
 Finally, activate the plugin.
 
 By default, the plugin will set the width of the admin menu to `200px`. Go to Settings > Wider Admin Menu to select a new width.
-
-If you have any questions or need help, use the [support forum](http://wordpress.org/support/plugin/wider-admin-menu) or [contact me](http://www.wpmission.com/contact/).
 
 == Frequently Asked Questions ==
 
@@ -79,7 +77,15 @@ Some plugins and themes don't fully uninstall everything they installed - things
 
 So this plugin will completely remove itself upon deletion. Deactivating the plugin will leave the settings intact, though. As an added bonus, you can switch off "Leave No Trace" so the settings remain after deletion, if you want.
 
+== Screenshots ==
+
+1. Before
+2. After
+
 == Changelog ==
+
+= 1.2.1 - April 14, 2017 =
+* Update URLs.
 
 = 1.2 - June 24, 2016 =
 * New "Leave No Trace" icon.

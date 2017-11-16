@@ -4,13 +4,13 @@
  * Plugin URI: https://strongplugins.com/plugins/wider-admin-menu/
  * Description: Let your admin menu breathe.
  * Author: Chris Dillon
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author URI: https://strongplugins.com
  * Text Domain: wider-admin-menu
  * Requires: 3.3 or higher
  * License: GPLv3 or later
  *
- * Copyright 2014-2017  Chris Dillon  chris@strongplugins.com
+ * Copyright 2014-2018  Chris Dillon  chris@strongplugins.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -26,26 +26,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
 
+/**
+ * Class WiderAdminMenu
+ */
 class WiderAdminMenu {
 
 	public function __construct() {
-		load_plugin_textdomain( 'wider-admin-menu', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-
-		register_activation_hook( __FILE__, array( $this, 'install' ) );
-
 		add_action( 'load-settings_page_wider-admin-menu', array( $this, 'load_admin_scripts' ) );
 		add_action( 'load-settings_page_wider-admin-menu', array( $this, 'load_lnt_style' ) );
 
 		add_action( 'admin_head', array( $this, 'custom_admin_style' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
 
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 
 		// LNT icon
 		add_action( 'load-plugins.php', array( $this, 'load_lnt_style' ) );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 4 );
-
 	}
 
 	public function load_admin_scripts() {
@@ -53,7 +54,7 @@ class WiderAdminMenu {
 
 		$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
 		if ( 'settings' == $active_tab ) {
-			wp_enqueue_style( 'nouislider-style',	plugins_url( '/css/jquery.nouislider.min.css', __FILE__ ) );
+			wp_enqueue_style( 'nouislider-style', plugins_url( '/css/jquery.nouislider.min.css', __FILE__ ) );
 			wp_enqueue_script( 'nouislider', plugins_url( '/js/jquery.nouislider.min.js', __FILE__ ), array( 'jquery' ) );
 			wp_enqueue_script( 'wpmwam-script', plugins_url( '/js/wider-admin-menu.js', __FILE__ ), array( 'nouislider' ) );
 		}
@@ -66,10 +67,10 @@ class WiderAdminMenu {
 	/**
 	 * Install with default setting.
 	 */
-	public function install() {
+	public static function plugin_activation() {
 		$options = array(
-				'wpmwam_width' => 200,
-				'wpmwam_lnt'   => 1
+			'wpmwam_width' => 200,
+			'wpmwam_lnt'   => 1,
 		);
 		update_option( 'wpmwam_options', $options );
 	}
@@ -82,6 +83,7 @@ class WiderAdminMenu {
 			$settings_link = '<a href="' . admin_url( 'options-general.php?page=wider-admin-menu.php' ) . '">' . __( 'Settings', 'wider-admin-menu' ) . '</a>';
 			array_unshift( $links, $settings_link );
 		}
+
 		return $links;
 	}
 
@@ -92,6 +94,7 @@ class WiderAdminMenu {
 		if ( $plugin_file == plugin_basename( __FILE__ ) ) {
 			$plugin_meta[] = '<span class="lnt">Leave No Trace</span>';
 		}
+
 		return $plugin_meta;
 	}
 
@@ -102,21 +105,26 @@ class WiderAdminMenu {
 		$wp_version = get_bloginfo( 'version' );
 		// Get width option. Prevent zero in case of installation error.
 		$wpmwam = get_option( 'wpmwam_options' );
-		$w = (int) $wpmwam['wpmwam_width'];
-		if ( ! $w )
+		$w      = (int) $wpmwam['wpmwam_width'];
+		if ( !$w ) {
 			$w = 160;
+		}
 		$wpx = $w . 'px';
 		$w1px = ( $w + 1 ) . 'px';
 		$w2px = ( $w + 20 ) . 'px';
 
-		if ( version_compare( $wp_version, '4.0', '>=' ) )
+		if ( version_compare( $wp_version, '4.0', '>=' ) ) {
 			$file = 'style40';
-		elseif ( version_compare( $wp_version, '3.8', '>=' ) )
+		}
+        elseif ( version_compare( $wp_version, '3.8', '>=' ) ) {
 			$file = 'style38';
-		elseif ( version_compare( $wp_version, '3.5', '>=' ) )
+		}
+        elseif ( version_compare( $wp_version, '3.5', '>=' ) ) {
 			$file = 'style35';
-		elseif ( version_compare( $wp_version, '3.3', '>=' ) )
+		}
+        elseif ( version_compare( $wp_version, '3.3', '>=' ) ) {
 			$file = 'style33';
+		}
 
 		include( plugin_dir_path( __FILE__ ) . "includes/$file.php" );
 	}
@@ -125,8 +133,10 @@ class WiderAdminMenu {
 	 * Add options page to Settings menu.
 	 */
 	public function add_options_page() {
-		add_options_page( 'Wider Admin Menu', 'Wider Admin Menu', 'manage_options', basename( __FILE__ ), array( $this, 'settings_page' ) );
-		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_options_page( 'Wider Admin Menu', 'Wider Admin Menu', 'manage_options', basename( __FILE__ ), array(
+			$this,
+			'settings_page',
+		) );
 	}
 
 	/**
@@ -142,6 +152,7 @@ class WiderAdminMenu {
 	public function sanitize_options( $input ) {
 		$input['wpmwam_width'] = sanitize_text_field( $input['wpmwam_width'] );
 		$input['wpmwam_lnt']   = isset( $input['wpmwam_lnt'] ) ? $input['wpmwam_lnt'] : 0;
+
 		return $input;
 	}
 
@@ -149,35 +160,38 @@ class WiderAdminMenu {
 	 * Our settings page.
 	 */
 	function settings_page() {
-		if ( ! current_user_can( 'manage_options' ) )  {
+		if ( !current_user_can( 'manage_options' ) ) {
 			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 		}
 
 		$wp_version = get_bloginfo( 'version' );
 		?>
-		<div class="wrap">
+        <div class="wrap">
+            <h2><?php _e( 'Wider Admin Menu', 'wider-admin-menu' ); ?></h2>
+            <p><?php _e( 'Adjust the width of the admin menu to accomodate longer menu items.', 'wider-admin-menu' ); ?></p>
 
-			<h2><?php _e( 'Wider Admin Menu', 'wider-admin-menu' ); ?></h2>
-
-			<p><?php _e( 'Adjust the width of the admin menu to accomodate longer menu items.', 'wider-admin-menu' ); ?></p>
-
-			<?php /* tabs */ ?>
 			<?php $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings'; ?>
-			<h2 class="nav-tab-wrapper">
-				<a href="?page=wider-admin-menu.php" class="nav-tab <?php echo $active_tab == 'settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'wider-admin-menu' ); ?></a>
-				<a href="?page=wider-admin-menu.php&tab=alternate" class="nav-tab <?php echo $active_tab == 'alternate' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Alternate Method', 'wider-admin-menu' ); ?></a>
-			</h2>
+            <h2 class="nav-tab-wrapper">
+                <a href="?page=wider-admin-menu.php"
+                   class="nav-tab <?php echo $active_tab == 'settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'wider-admin-menu' ); ?></a>
+                <a href="?page=wider-admin-menu.php&tab=alternate"
+                   class="nav-tab <?php echo $active_tab == 'alternate' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Alternate Method', 'wider-admin-menu' ); ?></a>
+            </h2>
 
 			<?php
-			if ( $active_tab == 'alternate' )
+			if ( $active_tab == 'alternate' ) {
 				include( plugin_dir_path( __FILE__ ) . 'includes/settings-alternate.php' );
-			else
+			}
+			else {
 				include( plugin_dir_path( __FILE__ ) . 'includes/settings-form.php' );
+			}
 			?>
-		</div>
+        </div>
 		<?php
 	}
 
 }
+
+register_activation_hook( __FILE__, array( 'WiderAdminMenu', 'plugin_activation' ) );
 
 new WiderAdminMenu();

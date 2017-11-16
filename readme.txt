@@ -2,8 +2,8 @@
 Contributors: cdillon27
 Tags: admin menu
 Requires at least: 3.3
-Tested up to: 4.8.1
-Stable tag: 1.2.2
+Tested up to: 4.9
+Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,10 @@ For WordPress 3.3 to 3.4.2, substitute `wider-admin-menu-33.css`.
 
 Need a hand? I'm on the [support forum](http://wordpress.org/support/plugin/wider-admin-menu).
 
+= How can I contribute a translation? =
+
+[Translate directly on wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wider-admin-menu). Thanks!
+
 = Leave no trace? What's that about? =
 
 Some plugins and themes don't fully uninstall everything they installed - things like settings, database tables, subdirectories. That bugs me. Sometimes, it bugs your WordPress too.
@@ -83,6 +87,10 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 2. After
 
 == Changelog ==
+
+= 1.2.3 - 2017-11-16 =
+* Minor refactoring.
+* Removed translation file.
 
 = 1.2.2 - 2017-09-04 =
 * Update URLs.

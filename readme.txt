@@ -2,8 +2,8 @@
 Contributors: cdillon27
 Tags: admin menu
 Requires at least: 3.3
-Tested up to: 4.9
-Stable tag: 1.2.3
+Tested up to: 5.0
+Stable tag: 1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,6 +88,9 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 
 == Changelog ==
 
+= 1.3 - 2018-12-09 =
+* Updated for WordPress version 5 and Gutenberg editor.
+
 = 1.2.3 - 2017-11-16 =
 * Minor refactoring.
 * Removed translation file.
@@ -138,3 +141,7 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 
 = 0.1 =
 * First release.
+
+== Upgrade Notice ==
+
+Updated for WordPress version 5 and Gutenberg editor.

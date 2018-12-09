@@ -4,13 +4,13 @@
  * Plugin URI: https://strongplugins.com/plugins/wider-admin-menu/
  * Description: Let your admin menu breathe.
  * Author: Chris Dillon
- * Version: 1.2.3
+ * Version: 1.3
  * Author URI: https://strongplugins.com
  * Text Domain: wider-admin-menu
  * Requires: 3.3 or higher
  * License: GPLv3 or later
  *
- * Copyright 2014-2018  Chris Dillon  chris@strongplugins.com
+ * Copyright 2014-2019  Chris Dillon  chris@strongplugins.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as

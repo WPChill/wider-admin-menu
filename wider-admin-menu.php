@@ -4,13 +4,13 @@
  * Plugin URI: https://strongplugins.com/plugins/wider-admin-menu/
  * Description: Let your admin menu breathe.
  * Author: Chris Dillon
- * Version: 1.2.3
+ * Version: 1.3
  * Author URI: https://strongplugins.com
  * Text Domain: wider-admin-menu
  * Requires: 3.3 or higher
  * License: GPLv3 or later
  *
- * Copyright 2014-2018  Chris Dillon  chris@strongplugins.com
+ * Copyright 2014-2019  Chris Dillon  chris@strongplugins.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -27,7 +27,9 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Class WiderAdminMenu
@@ -77,6 +79,11 @@ class WiderAdminMenu {
 
 	/**
 	 * Plugin list action links
+	 *
+	 * @param $links
+	 * @param $file
+	 *
+	 * @return mixed
 	 */
 	public function plugin_action_links( $links, $file ) {
 		if ( $file == plugin_basename( __FILE__ ) ) {
@@ -89,6 +96,13 @@ class WiderAdminMenu {
 
 	/**
 	 * Plugin meta row
+	 *
+	 * @param $plugin_meta
+	 * @param $plugin_file
+	 * @param $plugin_data
+	 * @param $status
+	 *
+	 * @return array
 	 */
 	public function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
 		if ( $plugin_file == plugin_basename( __FILE__ ) ) {
@@ -106,27 +120,30 @@ class WiderAdminMenu {
 		// Get width option. Prevent zero in case of installation error.
 		$wpmwam = get_option( 'wpmwam_options' );
 		$w      = (int) $wpmwam['wpmwam_width'];
-		if ( !$w ) {
+		if ( ! $w ) {
 			$w = 160;
 		}
-		$wpx = $w . 'px';
-		$w1px = ( $w + 1 ) . 'px';
-		$w2px = ( $w + 20 ) . 'px';
+		$wpx  = $w . 'px';
+		$w1px = ( $w+1 ) . 'px';
+		$w2px = ( $w+20 ) . 'px';
 
-		if ( version_compare( $wp_version, '4.0', '>=' ) ) {
+		$file = '';
+
+		if ( version_compare( $wp_version, '5', '>' ) ) {
+			$file = 'style50';
+		} elseif ( version_compare( $wp_version, '4', '>=' ) ) {
 			$file = 'style40';
-		}
-        elseif ( version_compare( $wp_version, '3.8', '>=' ) ) {
+		} elseif ( version_compare( $wp_version, '3.8', '>=' ) ) {
 			$file = 'style38';
-		}
-        elseif ( version_compare( $wp_version, '3.5', '>=' ) ) {
+		} elseif ( version_compare( $wp_version, '3.5', '>=' ) ) {
 			$file = 'style35';
-		}
-        elseif ( version_compare( $wp_version, '3.3', '>=' ) ) {
+		} elseif ( version_compare( $wp_version, '3.3', '>=' ) ) {
 			$file = 'style33';
 		}
 
-		include( plugin_dir_path( __FILE__ ) . "includes/$file.php" );
+		if ( $file ) {
+			include( plugin_dir_path( __FILE__ ) . "includes/$file.php" );
+		}
 	}
 
 	/**
@@ -148,6 +165,10 @@ class WiderAdminMenu {
 
 	/**
 	 * Sanitize user input.
+	 *
+	 * @param $input
+	 *
+	 * @return mixed
 	 */
 	public function sanitize_options( $input ) {
 		$input['wpmwam_width'] = sanitize_text_field( $input['wpmwam_width'] );
@@ -160,7 +181,7 @@ class WiderAdminMenu {
 	 * Our settings page.
 	 */
 	function settings_page() {
-		if ( !current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 		}
 
@@ -181,8 +202,7 @@ class WiderAdminMenu {
 			<?php
 			if ( $active_tab == 'alternate' ) {
 				include( plugin_dir_path( __FILE__ ) . 'includes/settings-alternate.php' );
-			}
-			else {
+			} else {
 				include( plugin_dir_path( __FILE__ ) . 'includes/settings-form.php' );
 			}
 			?>

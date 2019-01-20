@@ -11,8 +11,6 @@ Let your admin menu breathe.
 
 == Description ==
 
-> This plugin is up for adoption.
-
 Wider Admin Menu is a lightweight plugin that lets you set the width of your admin menu from the default `160px` up to `300px`.
 
 A separate stylesheet is also included if you wish to avoid Yet Another Plugin. See FAQ.

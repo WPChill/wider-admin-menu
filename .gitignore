@@ -1,0 +1,8 @@
+*.log
+/node_modules/
+.idea/
+/.standard.json
+wider-admin-menu.zip
+package-lock.json
+.DS_Store
+package-lock.json

@@ -4,7 +4,7 @@ Tags: admin menu
 Requires at least: 4.6
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.4
+Stable tag: 1.3.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,7 +91,7 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 
 == Changelog ==
 
-= 1.4 - 2019-09-12 =
+= 1.3.1 - 2019-09-12 =
 * Translation ready
 * Created pot file
 

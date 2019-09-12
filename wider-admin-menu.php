@@ -3,7 +3,7 @@
  * Plugin Name: 			Wider Admin Menu
  * Description: 			Let your admin menu breathe.
  * Author: 					MachoThemes
- * Version: 				1.4
+ * Version: 				1.3.1
  * Author URI: 				https://www.machothemes.com/
  * Text Domain: 			wider-admin-menu
  * Requires: 				4.6 or higher

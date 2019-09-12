@@ -1,19 +1,31 @@
 <?php
 /**
- * Plugin Name: Wider Admin Menu
- * Plugin URI: https://strongplugins.com/plugins/wider-admin-menu/
- * Description: Let your admin menu breathe.
- * Author: Chris Dillon
- * Version: 1.3
- * Author URI: https://strongplugins.com
- * Text Domain: wider-admin-menu
- * Requires: 3.3 or higher
- * License: GPLv3 or later
+ * Plugin Name: 			Wider Admin Menu
+ * Description: 			Let your admin menu breathe.
+ * Author: 					MachoThemes
+ * Version: 				1.4
+ * Author URI: 				https://www.machothemes.com/
+ * Text Domain: 			wider-admin-menu
+ * Requires: 				4.6 or higher
+ * License: 				GPLv3 or later
+ * License URI:       		http://www.gnu.org/licenses/gpl-3.0.html
+ * Requires PHP: 			5.6
+ * Tested up to:            5.2
  *
- * Copyright 2014-2019  Chris Dillon  chris@strongplugins.com
+ * Copyright 2014-2019  	Chris Dillon 		chris@strongwp.com
+ * Copyright 2019 			MachoThemes 		office@machothemes.com
+ *
+ * Original Plugin URI: 	https://strongplugins.com/plugins/wider-admin-menu
+ * Original Author URI: 	https://strongplugins.com
+ * Original Author: 		https://profiles.wordpress.org/cdillon27/
+ *
+ * NOTE:
+ * Chris Dillon transferred ownership rights on: 01/20/2019 06:56:07 PM when ownership was handed over to MachoThemes
+ * The MachoThemes ownership period started on: 01/20/2019 06:56:08 PM
+ * SVN commit proof of ownership transferral: https://plugins.trac.wordpress.org/changeset/2015927/wider-admin-menu
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
+ * it under the terms of the GNU General Public License, version 3, as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -49,7 +61,13 @@ class WiderAdminMenu {
 		// LNT icon
 		add_action( 'load-plugins.php', array( $this, 'load_lnt_style' ) );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 4 );
+
+        add_action( 'plugins_loaded', array($this,'load_textdomain' ));
 	}
+
+	public function load_textdomain(){
+        load_plugin_textdomain( 'wider-admin-menu', false, basename( dirname( __FILE__ ) ) . '/languages' );
+    }
 
 	public function load_admin_scripts() {
 		wp_enqueue_style( 'wpmwam-options', plugins_url( '/css/options.css', __FILE__ ) );
@@ -106,7 +124,7 @@ class WiderAdminMenu {
 	 */
 	public function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
 		if ( $plugin_file == plugin_basename( __FILE__ ) ) {
-			$plugin_meta[] = '<span class="lnt">Leave No Trace</span>';
+			$plugin_meta[] = '<span class="lnt">'.__('Leave No Trace','wider-admin-menu').'</span>';
 		}
 
 		return $plugin_meta;

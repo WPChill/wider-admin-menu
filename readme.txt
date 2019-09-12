@@ -1,15 +1,18 @@
 === Wider Admin Menu ===
-Contributors: cdillon27
+Contributors: cdillon27,machothemes,silkalns
 Tags: admin menu
-Requires at least: 3.3
-Tested up to: 5.1
-Stable tag: 1.3
+Requires at least: 4.6
+Tested up to: 5.2
+Requires PHP: 5.6
+Stable tag: 1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Let your admin menu breathe.
 
 == Description ==
+
+**Wider Admin Menu** is a standalone plugin built, maintained & operated by the friendly folks over at [MachoThemes](https://www.machothemes.com/).
 
 Wider Admin Menu is a lightweight plugin that lets you set the width of your admin menu from the default `160px` up to `300px`.
 
@@ -87,6 +90,10 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 2. After
 
 == Changelog ==
+
+= 1.4 - 2019-09-12 =
+* Translation ready
+* Created pot file
 
 = 1.3 - 2018-12-09 =
 * Updated for WordPress version 5 and Gutenberg editor.

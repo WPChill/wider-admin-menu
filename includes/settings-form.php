@@ -58,7 +58,7 @@
 	<table class="form-table" style="width: auto;">
 		<tr>
 			<th scope="row">
-				<label class="lnt" for="wpmwam_lnt">Leave No Trace</label>
+				<label class="lnt" for="wpmwam_lnt"><?php _e('Leave No Trace','wider-admin-menu'); ?></label>
 			</th>
 			<td>
 				<div id="leave-no-trace">

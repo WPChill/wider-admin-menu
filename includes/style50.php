@@ -36,4 +36,12 @@
     .auto-fold .components-notice-list {
         left: <?php echo $wpx; ?>;
     }
+
+    /* Various themes fix */
+    @media screen and (min-width:961px){
+        body.auto-fold .edit-post-layout__content {
+            margin-left: <?php echo $wpx; ?>;
+        }
+    }
+
 </style>

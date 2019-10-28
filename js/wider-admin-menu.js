@@ -10,40 +10,32 @@ jQuery( document ).ready(function($){
 
 	wpArr = wpVersion.split('.');
 
-	var Link = $.noUiSlider.Link,
-			nouislider = $("#nouislider"),
-			target = $("#wpmwam_width");
+	var target = $("#wpmwam_width");
+	var max = target.data('max'),
+		min = target.data('min'),
+		step = target.data('step'),
+		value = parseInt(target.val(), 10);
+
+	$("#wpmwam_slider").slider({
+		orientation: "horizontal",
+		step: step,
+		min: min,
+		max: max,
+		value: value,
+		slide: function( event, ui ) {
+			target.val( ui.value ).trigger( 'change' );
+		},
+		stop: function(){
+			update();
+		}
+	});
+
 
 	// Some browsers save form data despite it being set on form generation.
 	// So instead, let's get the current setting from "current" element,
 	// then populate input field with it. (f u browser)
 	var currentWidth = parseInt( $('#wpmwam_current').html() );
 	target.val( currentWidth );
-
-	nouislider.noUiSlider({
-		start: currentWidth,
-		step: 10,
-		range: {
-			'min': 160,
-			'max': 300
-		},
-		serialization: {
-			lower: [
-				new Link({
-					target: target,
-					format: {
-						decimals: 0
-					}
-				})
-			]
-		}
-
-	});
-
-	// real-time update
-	nouislider.on('set', update);
-	//target.change(update);
-	target.blur(update);
 
 	function update(){
 		var wider = parseInt( target.val() ),
@@ -114,10 +106,18 @@ jQuery( document ).ready(function($){
 
 	// reset buttons
 	$('#reset-current').click(function(e){
-		nouislider.val(currentWidth, { set: true });
+		$("#wpmwam_slider").slider({
+			value:currentWidth
+		});
+		target.val(currentWidth);
+		update();
 	});
 	$('#reset-default').click(function(e){
-		nouislider.val(160, { set: true });
+		$("#wpmwam_slider").slider({
+			value:160
+		});
+		target.val(160);
+		update();
 	});
 
 });

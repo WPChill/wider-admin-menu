@@ -3,7 +3,7 @@
  * Plugin Name: 			Wider Admin Menu
  * Description: 			Let your admin menu breathe.
  * Author: 					MachoThemes
- * Version: 				1.3.2
+ * Version: 				1.5
  * Author URI: 				https://www.machothemes.com/
  * Text Domain: 			wider-admin-menu
  * Requires: 				4.6 or higher
@@ -74,9 +74,9 @@ class WiderAdminMenu {
 
 		$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
 		if ( 'settings' == $active_tab ) {
-			wp_enqueue_style( 'nouislider-style', plugins_url( '/css/jquery.nouislider.min.css', __FILE__ ) );
-			wp_enqueue_script( 'nouislider', plugins_url( '/js/jquery.nouislider.min.js', __FILE__ ), array( 'jquery' ) );
-			wp_enqueue_script( 'wpmwam-script', plugins_url( '/js/wider-admin-menu.js', __FILE__ ), array( 'nouislider' ) );
+
+            wp_enqueue_script('jquery-ui-slider');
+			wp_enqueue_script( 'wpmwam-script', plugins_url( '/js/wider-admin-menu.js', __FILE__ ),array('jquery-ui-slider') );
 		}
 	}
 

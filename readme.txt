@@ -2,7 +2,7 @@
 Contributors: cdillon27,machothemes,silkalns
 Tags: admin menu
 Requires at least: 4.6
-Tested up to: 5.2
+Tested up to: 5.3
 Requires PHP: 5.6
 Stable tag: 1.6
 License: GPLv3 or later

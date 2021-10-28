@@ -90,6 +90,8 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 2. After
 
 == Changelog ==
+= 1.7 - TBA =
+* Added: Sanitization and escapes
 
 = 1.6 - 2019-10-28 =
 * Changed slider with jquery ui slide

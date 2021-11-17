@@ -72,7 +72,7 @@ class WiderAdminMenu {
 	public function load_admin_scripts() {
 		wp_enqueue_style( 'wpmwam-options', plugins_url( '/css/options.css', __FILE__ ) );
 
-		$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
+		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) )  : 'settings';
 		if ( 'settings' == $active_tab ) {
 
 			wp_enqueue_script( 'jquery-ui-slider' );
@@ -105,7 +105,7 @@ class WiderAdminMenu {
 	 */
 	public function plugin_action_links( $links, $file ) {
 		if ( $file == plugin_basename( __FILE__ ) ) {
-			$settings_link = '<a href="' . admin_url( 'options-general.php?page=wider-admin-menu.php' ) . '">' . esc_html__( 'Settings', 'wider-admin-menu' ) . '</a>';
+			$settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page=wider-admin-menu.php' ) ) . '">' . esc_html__( 'Settings', 'wider-admin-menu' ) . '</a>';
 			array_unshift( $links, $settings_link );
 		}
 
@@ -213,7 +213,7 @@ class WiderAdminMenu {
             <h2><?php esc_html_e( 'Wider Admin Menu', 'wider-admin-menu' ); ?></h2>
             <p><?php esc_html_e( 'Adjust the width of the admin menu to accomodate longer menu items.', 'wider-admin-menu' ); ?></p>
 
-			<?php $active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'settings'; ?>
+			<?php $active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'settings'; ?>
             <h2 class="nav-tab-wrapper">
                 <a href="?page=wider-admin-menu.php"
                    class="nav-tab <?php echo $active_tab == 'settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Settings', 'wider-admin-menu' ); ?></a>

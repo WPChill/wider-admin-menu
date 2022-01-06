@@ -3,14 +3,14 @@
  * Plugin Name:             Wider Admin Menu
  * Description:             Let your admin menu breathe.
  * Author:                  MachoThemes
- * Version:                 1.6
+ * Version:                 1.4
  * Author URI:              https://www.machothemes.com/
  * Text Domain:             wider-admin-menu
  * Requires:                4.6 or higher
  * License:                 GPLv3 or later
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.html
  * Requires PHP:            5.6
- * Tested up to:            5.3
+ * Tested up to:            5.8
  *
  * Copyright 2014-2019      Chris Dillon        chris@strongwp.com
  * Copyright 2019           MachoThemes         office@machothemes.com
@@ -206,7 +206,7 @@ class WiderAdminMenu {
 	 */
 	function settings_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wider-admin-menu' ) );
+			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' ) );
 		}
 
 		$wp_version = get_bloginfo( 'version' );

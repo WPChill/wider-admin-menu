@@ -2,9 +2,9 @@
 Contributors: cdillon27,machothemes,silkalns
 Tags: admin menu
 Requires at least: 4.6
-Tested up to: 5.2
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.3.2
+Stable tag: 1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,6 +90,12 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 2. After
 
 == Changelog ==
+
+= 1.4 - 2022-10-28 =
+* Changed slider with jquery ui slide
+* Removed extra script
+* Removed extra style
+* Added: Sanitization and escapes
 
 = 1.3.2 - 2019-10-18 =
 * Fix WP Side Menu going over Gutenberg/Editor

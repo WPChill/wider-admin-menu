@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name:             Wider Admin Menu
- * Description:             Let your admin menu breathe.
- * Author:                  MachoThemes
- * Version:                 1.4
- * Author URI:              https://www.machothemes.com/
- * Text Domain:             wider-admin-menu
- * Requires:                4.6 or higher
+ * Description: 			Let your admin menu breathe.
+ * Author: 					WPChill
+ * Version: 				1.4
+ * Author URI: 				https:/wpchill.com/
+ * Text Domain: 			wider-admin-menu
+ * Requires: 				4.6 or higher
  * License:                 GPLv3 or later
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.html
  * Requires PHP:            5.6
@@ -19,10 +19,12 @@
  * Original Author URI:     https://strongplugins.com
  * Original Author:         https://profiles.wordpress.org/cdillon27/
  *
- * NOTE:
+* NOTE:
  * Chris Dillon transferred ownership rights on: 01/20/2019 06:56:07 PM when ownership was handed over to MachoThemes
  * The MachoThemes ownership period started on: 01/20/2019 06:56:08 PM
  * SVN commit proof of ownership transferral: https://plugins.trac.wordpress.org/changeset/2015927/wider-admin-menu
+ * 
+ * MachoThemes transferred ownership to WPChill on: 5th of November, 2020. WPChill is a restructure and rebrand of MachoThemes.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 3, as

@@ -1,7 +1,7 @@
 === Wider Admin Menu ===
-Contributors: cdillon27,machothemes,silkalns
+Contributors: wpchill,silkalns,cdillon27
 Tags: admin menu
-Requires at least: 4.6
+Requires at least: 5.2
 Tested up to: 5.8
 Requires PHP: 5.6
 Stable tag: 1.4

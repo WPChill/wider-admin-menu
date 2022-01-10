@@ -91,7 +91,7 @@ So this plugin will completely remove itself upon deletion. Deactivating the plu
 
 == Changelog ==
 
-= 1.4 - 2022-10-28 =
+= 1.4 - 2022-01-10 =
 * Changed slider with jquery ui slide
 * Removed extra script
 * Removed extra style
